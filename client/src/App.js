@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import {Button} from 'react-materialize';
 import './App.css';
 
 class App extends Component {
   state = {
-    response: ''
+
   };
 
   componentDidMount() {
     this.callApi()
-    .then(res => this.setState({ response: res.express }))
     .catch(err => console.log(err));
   }
 
@@ -26,13 +26,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h1 className="App-logo">Welcome to React</h1>
-      </header>
-      <p className="App-logo">
-      wesh
-      </p>
+        <div className="App-content">
+          <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">
+          Moviestar
+            </h1>
+          <Button large waves='light'>
+            Start
+          </Button>
+        </div>
       </div>
       );
   }

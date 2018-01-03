@@ -12,7 +12,7 @@ app.get('/api/scrap', function(req, res) {
 			let title;
 			let json = {titles: []};
 			let lon;
-			$('.a8').filter(function() {
+			$('.cV').filter(function() {
 				let data = $(this);
 				data.children().each(function(i){
 					if ($(this).text() !== '')

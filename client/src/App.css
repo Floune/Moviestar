@@ -1,5 +1,13 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  background-color: #222;
+  height: 100vh;
+  padding: 20px;
+  color: white;
 }
 
 .App-logo {
@@ -7,19 +15,12 @@
   height: 80px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.App-content {
+  
 }
 
 .App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
+  font-size: 2em;
 }
 
 @keyframes App-logo-spin {
