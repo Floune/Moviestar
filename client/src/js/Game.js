@@ -7,7 +7,7 @@ class Game extends React.Component {
 		response: ''
 	};
 
-	componentDidMount() {
+	componentWillMount() {
 		this.callApi()
 		.then(res => this.setState({ response: res}))
 		.catch(err => console.log(err));
@@ -21,6 +21,7 @@ class Game extends React.Component {
 			throw Error(tab.title);
 		return tab;
 	}
+	
 	render() {
 		console.log(this.state.response);
 		return (

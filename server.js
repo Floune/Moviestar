@@ -11,8 +11,10 @@ app.get('/api/scrap', function(req, res) {
 			let $ = cheerio.load(html);
 			let title;
 			let json = {titles: []};
-			let lon;
-			$('.a-').filter(function() {
+			let div = $('body').find('div').children('div').first().children().eq(5).children().first().children().first();
+			console.log(div.attr());
+		
+			div.filter(function() {
 				let data = $(this);
 				data.children().each(function(i){
 					if ($(this).text() !== '')
