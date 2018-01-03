@@ -19,7 +19,7 @@ app.get('/api/scrap', function(req, res) {
 						json.titles.push($(this).text());
 				})
 			})
-			res.send({json});
+			res.send({json: json});
 		}
 	})
 })

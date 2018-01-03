@@ -9,19 +9,20 @@ class Game extends React.Component {
 
 	componentDidMount() {
 		this.callApi()
-		.then(res => this.setState({ response: res.json }))
+		.then(res => this.setState({ response: res}))
 		.catch(err => console.log(err));
 	}
 
 	callApi = async () => {
 		const response = await fetch('/api/scrap');
-		const body = await response.json();
+		const tab = await response.json();
 
 		if (response.status !== 200)
-			throw Error(body.title);
-		return body;
+			throw Error(tab.title);
+		return tab;
 	}
 	render() {
+		console.log(this.state.response);
 		return (
 			<div className="Game-container">
 			<h1>let's go</h1>;
