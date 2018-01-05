@@ -1,7 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import '../css/Game.css';
+import '../css/carousel.css';
+import '../../node_modules/react-responsive-carousel/lib/styles/carousel.min.css';
+import '../../node_modules/react-responsive-carousel/lib/components/Carousel.js'
 import Carte from './Card.js'
+import { Pagination } from 'react-materialize';
+import { Carousel, onChange, onClickItem, onClickThumb } from 'react-responsive-carousel';
 
 //Composant où vis le "jeu"
 class Game extends React.Component {
@@ -48,16 +53,21 @@ class Game extends React.Component {
 			let title_1 = title.slice(title_start_index);
 			film_obj.films[i].title = title_1;
 		}
+		film_obj.films.shift();
 		return (film_obj);
 	}
 	
 	render() {
 		let films = this.state.response;
-		console.log(films[3]);
 		return (
-			<div className="Game-container">
-			<Carte />
-			</div>
+				<div className="Game-card">
+					{films.map(film =>
+					<div>
+						<img src={film.url} />
+						<Carte film={film}/> 
+					</div>)}
+				</div>
+				
 			);
 	}
 }

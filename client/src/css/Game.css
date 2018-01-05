@@ -1,17 +1,16 @@
-.Game-container {
+.Game-card {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	z-index: 10;
-	top: 0;
-	left: 0;
 	background-color: #fff9c4;
-	width: 100vw;
-	height: 100vh;
 }
 
 .Game-affiche {
 	width: 15em;
+}
+
+.Game-card {
+
 }

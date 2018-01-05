@@ -7,7 +7,7 @@ const cheerio = require('cheerio');
 //Route appelée avant le montage du composant Game
 //Va chercher les films sur reelgood
 app.get('/api/scrap', function(req, res) {
-	url = 'https://reelgood.com/movies/genre/comedy';
+	url = 'https://reelgood.com/movies/genre/action';
 	request(url, function(error, response, html) {
 		if (!error) {
 			let $ = cheerio.load(html);

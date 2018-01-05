@@ -1,15 +1,25 @@
 import React from 'react';
-import { Card, CardTitle } from 'react-materialize';
+import { CardPanel, Button } from 'react-materialize';
 
 class Carte extends React.Component {
   constructor() {
     super();
   }
+
+  save_like(titre) {
+    console.log(titre.title + ' est liké');
+  }
+
+  save_dislike(titre) {
+    console.log(titre.title + ' est disliké');
+  }
+
   render() {
     return (
-      <Card className="Game-affiche" horizontal header={<CardTitle image="https://img.reelgood.com/content/movie/3ee4a5d7-4684-4fd5-ba1c-936eb32a5cbb/poster-342.webp"></CardTitle>} actions={[<a href='#'>This is a link</a>]}>
-        <p>Vote for me</p>
-      </Card>
+       <CardPanel className="teal lighten-4 black-text">
+            <Button large waves='light' className="Start-button" onClick={() => this.save_like(this.props.film)}>J'aime</Button>
+            <Button large waves='light' className="Start-button" onClick={() => this.save_dislike(this.props.film)}>Je vomis</Button>
+        </CardPanel>
       );
     }
   }

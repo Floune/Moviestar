@@ -6,6 +6,9 @@ import '../css/Start.css';
 
 //Composant de la page d'accueil
 class Start extends React.Component {
+	constructor() {
+		super();
+	}
 
 	render() {
 		return (
