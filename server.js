@@ -23,8 +23,8 @@ app.get('/api/scrap', function(req, res) {
 					//condition pour ne pas prendre les entrée vides
 					if ($(this).text() !== '')
 					{
-						tmp_json.url = $(this).find('picture').first().find('source').first().attr('srcset');
 						tmp_json.id = i;
+						tmp_json.url = $(this).find('picture').first().find('source').first().attr('srcset');
 						tmp_json.title = $(this).text();
 						tab_json.push({title: tmp_json.title, id: i, url: tmp_json.url});
 					}
