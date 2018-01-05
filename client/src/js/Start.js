@@ -4,6 +4,7 @@ import { Button } from 'react-materialize';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import '../css/Start.css';
 
+//Composant de la page d'accueil
 class Start extends React.Component {
 
 	render() {
