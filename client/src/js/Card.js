@@ -1,17 +1,17 @@
 import React from 'react';
 import { CardPanel, Button } from 'react-materialize';
+import '../css/card.css';
 
+//component avec les boutons pour voter
 class Carte extends React.Component {
-  constructor() {
-    super();
-  }
-
+  
   save_like(titre) {
     console.log(titre.title + ' est liké');
+    localStorage.setItem(titre.title, 'Liké');
   }
 
   save_dislike(titre) {
-    console.log(titre.title + ' est disliké');
+    localStorage.setItem(titre.title, 'Disliké');
   }
 
   render() {
