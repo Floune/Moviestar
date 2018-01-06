@@ -7,11 +7,11 @@ class Carte extends React.Component {
   
   save_like(titre) {
     console.log(titre.title + ' est liké');
-    localStorage.setItem(titre.title, 'Liké');
+    localStorage.setItem(titre.title, titre.url, 'liké');
   }
 
   save_dislike(titre) {
-    localStorage.setItem(titre.title, 'Disliké');
+    console.log(titre.title + ' est liké');
   }
 
   render() {

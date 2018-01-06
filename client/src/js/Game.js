@@ -1,8 +1,6 @@
 import React from 'react';
 import '../css/Game.css';
-import Carte from './Card.js'
-import ReactSwipe from 'react-swipe';
-import { Pagination } from 'react-materialize';
+import Carte from './Card.js';
 
 //Composant où vis le "jeu"
 class Game extends React.Component {
@@ -55,13 +53,12 @@ class Game extends React.Component {
 	
 	render() {
 		let films = this.state.response;
-		console.log(films);
 		return (
-				<div className="Game-card">
+				<div className="Game-container">
 					{films.map(film =>
-					<div key={film.id}>
+					<div key={film.id} className="Game-card">
 						<img src={film.url} alt={film.title}/>
-						<Carte film={film}/> 
+						<Carte film={film}/>
 					</div>)}
 				</div>
 				

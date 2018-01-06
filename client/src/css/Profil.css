@@ -1,12 +1,8 @@
-.Game-container {
+.Profil-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	align-items: center;
-	text-align: center;
+	align-items: flex-start;
+	text-align: left;
 	background-color: #fff9c4;
-}
-
-.Game-card {
-	
 }
