@@ -1,6 +1,8 @@
 import React from 'react';
 import '../css/Game.css';
 import Carte from './Card.js';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-materialize';
 
 //Composant où vis le "jeu"
 class Game extends React.Component {
@@ -55,6 +57,14 @@ class Game extends React.Component {
 		let films = this.state.response;
 		return (
 				<div className="Game-container">
+					<div className="Game-nav">
+					<Link to={'/'}>
+					<Button waves='light' className="Start-button small">Retour</Button>
+					</Link>
+					<Link to={'/profil/'}>
+					<Button medium waves='light' className="Start-button small">Profil</Button>
+					</Link>
+					</div>
 					{films.map(film =>
 					<div key={film.id} className="Game-card">
 						<img src={film.url} alt={film.title}/>

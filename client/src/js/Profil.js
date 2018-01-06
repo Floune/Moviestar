@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import '../css/Profil.css';
-import { Card, CardTitle } from 'react-materialize';
+import { Card, CardTitle, Button } from 'react-materialize';
+import { Link } from 'react-router-dom';
 
+//Component de la page de profil
 class Profil extends Component {
 
 	constructor(props) {
@@ -10,6 +12,12 @@ class Profil extends Component {
 	}
 
 	componentWillMount() {
+		let history = this.getCache();
+		this.setState({films: history});
+	}
+
+	//Récupère le localstorage et le renoie dans un tableau
+	getCache() {
 		let history = [];
 		let obj_tmp = {};
 		for (var key in localStorage) {
@@ -17,22 +25,36 @@ class Profil extends Component {
 			obj_tmp.url = localStorage[key];
 			history.push({film: obj_tmp.film, rate: obj_tmp.rate});
 		}
-		for (let x = 0; x < 6; x++)
+		for (let x = 0; x < 6; x++)//Boucle pour enlever les dernières ntrées du tableau qui contiennent d'autres choses
 			history.pop();
+		return (history);
+	}
+
+	suppr(film) {
+		localStorage.removeItem(film.film);
+		let history = this.getCache();
 		this.setState({films: history});
+		console.log(film.film);
 	}
 
 	render() {
 		let history = this.state.films;
-		console.log(history);
+		let msg;
+		if (history == '')
+			msg = <p>Historique vide</p>
 		return (
 			<div className="Profil-container">
 			<h3>Historique</h3>
+			{msg}
 			{history.map(film =>
-			
-				<p>{film.rate} {film.film}</p>
-
+				<div key={film.film} className="Profil-card">
+					<Button className="Profil-del-button waves-red waves-circle waves-light btn-floating secondary-content" onClick={() => this.suppr(film)}><i class="material-icons delete">delete</i></Button>
+					<span className="Profil-infos">{film.rate} {film.film}</span> 
+				</div>
 				)}
+			<Link to={'/game/'}>
+				<Button waves='light' className="Start-button">Retour</Button>
+			</Link>
 			</div>
 			);
 	}

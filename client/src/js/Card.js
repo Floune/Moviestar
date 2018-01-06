@@ -11,7 +11,7 @@ class Carte extends React.Component {
   }
 
   save_dislike(titre) {
-    console.log(titre.title + ' est liké');
+    console.log(titre.title + ' est liké'); 
   }
 
   render() {
