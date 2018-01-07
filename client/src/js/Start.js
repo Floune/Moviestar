@@ -23,7 +23,7 @@ class Start extends React.Component {
 
 	clean_G(genre) {
 		let clean_genre = genre.slice(6).toUpperCase();
-		if (clean_genre == 'RANDOM')
+		if (clean_genre === 'RANDOM')
 			clean_genre += ' ?';
 		return (clean_genre);
 	}

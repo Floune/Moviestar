@@ -38,5 +38,7 @@ app.get('/api/scrap/:genre', function(req, res) {
 		})
 })
 
-//La ligne proxy dans le package.json de l'appli react la fait communiquer avec le serveur
+// décommenter pour servir le dossier build
+// app.use('/', express.static(`${__dirname}/client/build`));
+// Commenter pour servir le dossier build
 app.listen(port, () => console.log(`listening on port ${port}`));

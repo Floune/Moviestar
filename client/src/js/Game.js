@@ -45,8 +45,8 @@ class Game extends React.Component {
 	//Appel à l'API
 	callApi = async () => {
 		let genre = this.props.location.pathname.slice(6);
-		if (genre == 'random')
-		{
+		if (genre === 'random')
+		{ //Si le genre est random on choisit un genre au hasard dans les states
 			let index = Math.floor(Math.random() * Math.floor(this.state.genres.length));
 			genre = this.state.genres[index];
 		}

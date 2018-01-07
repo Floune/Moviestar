@@ -43,6 +43,9 @@ class Profil extends Component {
 		let retoure = '/game/' + this.props.location.pathname.slice(8);
 		return (
 			<div className="Profil-container">
+			<Link to={retoure}>
+				<Button waves='light' className="Start-button">Retour</Button>
+			</Link>
 			<h4>Historique</h4>
 			{history.map(film =>
 				<div key={film.film} className="Profil-card">
@@ -50,9 +53,6 @@ class Profil extends Component {
 					<span className="Profil-infos">{film.film} : <Rater total={5} rating={Number(film.rate)} interactive={false}/></span> 
 				</div>
 				)}
-			<Link to={retoure}>
-				<Button waves='light' className="Start-button">Retour</Button>
-			</Link>
 			</div>
 			);
 	}

@@ -1,11 +1,11 @@
 .Profil-container {
-	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: flex-start;
 	text-align: left;
-	background-color: #fff9c4;
+	color: white;
+	background-color: #222;
 }
 
 .Profil-card {

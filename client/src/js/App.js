@@ -3,7 +3,7 @@ import '../css/App.css';
 import Game from './Game.js';
 import Start from './Start.js';
 import Profil from './Profil.js';
-import NotFound from './NotFound.js';
+// import NotFound from './NotFound.js';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 //Composant principal de l'appli où vivent les composants et le Router principal
