@@ -18,6 +18,19 @@ class Game extends React.Component {
 		.catch(err => console.log(err));
 	}
 
+	getCache = () => {
+		let history = [];
+		let obj_tmp = {};
+		for (var key in localStorage) {
+			obj_tmp.film = key;
+			obj_tmp.rate = localStorage[key];
+			history.push({film: obj_tmp.film, rate: obj_tmp.rate});
+		}
+		for (let x = 0; x < 6; x++)//Boucle pour enlever les dernières ntrées du tableau qui 
+			history.pop();         //contiennent des choses qu'on ne veut pas
+		return (history);
+	}
+
 	//Appel à l'API
 	callApi = async () => {
 		const response = await fetch('/api/scrap');
@@ -52,9 +65,24 @@ class Game extends React.Component {
 		film_obj.films.shift();
 		return (film_obj);
 	}
+
+	//fonction pour ne pas re affiher les films présents dans le local storage
+	checkHistory(films) {
+		let likes = this.getCache();
+		for (let i = 0; i < likes.length; i++)
+		{
+			for (let j = 0; j < films.length; j++)
+			{
+				if (likes[i].film === films[j].title)
+					films.splice(j, 1); //Pfouit
+			}
+		}
+		return (films);
+	}
 	
 	render() {
 		let films = this.state.response;
+		films = this.checkHistory(films);
 		return (
 				<div className="Game-container">
 					<div className="Game-nav">

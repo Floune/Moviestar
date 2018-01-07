@@ -36,13 +36,12 @@ class Profil extends Component {
 		localStorage.removeItem(film.film);
 		let history = this.getCache();
 		this.setState({films: history});
-		console.log(film.film);
 	}
 
 	render() {
 		let history = this.state.films;
 		let msg;
-		if (history === null)
+		if (history === '')
 			msg = <p>Historique vide</p>
 		return (
 			<div className="Profil-container">
@@ -50,8 +49,8 @@ class Profil extends Component {
 			{msg}
 			{history.map(film =>
 				<div key={film.film} className="Profil-card">
-					<Button className="Profil-del-button waves-red waves-circle waves-light btn-floating secondary-content" onClick={() => this.suppr(film)}><i class="material-icons delete">delete</i></Button>
-					<span className="Profil-infos">{film.film} : <Rater total={5} rating={film.rate} interactive={false}/></span> 
+					<Button className="Profil-del-button waves-red waves-circle waves-light btn-floating secondary-content" onClick={() => this.suppr(film)}><i className="material-icons delete">delete</i></Button>
+					<span className="Profil-infos">{film.film} : <Rater total={5} rating={Number(film.rate)} interactive={false}/></span> 
 				</div>
 				)}
 			<Link to={'/game/'}>
