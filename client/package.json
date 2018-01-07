@@ -8,8 +8,11 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-materialize": "^1.1.2",
+    "react-rater": "^0.4.8",
     "react-responsive-carousel": "^3.1.30",
     "react-scripts": "1.0.17",
+    "react-star-rating": "^1.4.2",
+    "react-stars": "^2.2.5",
     "react-swipe": "^5.1.1",
     "swipe-js-iso": "^2.0.4"
   },

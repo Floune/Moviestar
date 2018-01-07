@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import '../css/Profil.css';
 import { Card, CardTitle, Button } from 'react-materialize';
 import { Link } from 'react-router-dom';
+import Rater from 'react-rater';
+import 'react-rater/lib/react-rater.css';
 
 //Component de la page de profil
 class Profil extends Component {
@@ -22,7 +24,7 @@ class Profil extends Component {
 		let obj_tmp = {};
 		for (var key in localStorage) {
 			obj_tmp.film = key;
-			obj_tmp.url = localStorage[key];
+			obj_tmp.rate = localStorage[key];
 			history.push({film: obj_tmp.film, rate: obj_tmp.rate});
 		}
 		for (let x = 0; x < 6; x++)//Boucle pour enlever les dernières ntrées du tableau qui contiennent d'autres choses
@@ -40,16 +42,16 @@ class Profil extends Component {
 	render() {
 		let history = this.state.films;
 		let msg;
-		if (history == '')
+		if (history === null)
 			msg = <p>Historique vide</p>
 		return (
 			<div className="Profil-container">
-			<h3>Historique</h3>
+			<h4>Historique</h4>
 			{msg}
 			{history.map(film =>
 				<div key={film.film} className="Profil-card">
 					<Button className="Profil-del-button waves-red waves-circle waves-light btn-floating secondary-content" onClick={() => this.suppr(film)}><i class="material-icons delete">delete</i></Button>
-					<span className="Profil-infos">{film.rate} {film.film}</span> 
+					<span className="Profil-infos">{film.film} : <Rater total={5} rating={film.rate} interactive={false}/></span> 
 				</div>
 				)}
 			<Link to={'/game/'}>

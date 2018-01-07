@@ -1,27 +1,30 @@
 import React from 'react';
 import { CardPanel, Button } from 'react-materialize';
 import '../css/card.css';
+import Rater from 'react-rater'
+import 'react-rater/lib/react-rater.css'
 
-//component avec les boutons pour voter
+//component de notation à étoiles
 class Carte extends React.Component {
-  
-  save_like(titre) {
-    console.log(titre.title + ' est liké');
-    localStorage.setItem(titre.title, titre.url, 'liké');
-  }
 
-  save_dislike(titre) {
-    console.log(titre.title + ' est liké'); 
-  }
+handleRate(rating) {
+  let rate = rating.rating;
+  let film = rating.currentTarget.parentElement.parentElement.innerHTML;
+  let index = film.search('alt=') + 5;
+  film = film.slice(index).trimLeft();
+  index = film.search('">');
+  film = film.slice(0, index);
+  localStorage.setItem(film, rate);
+  localStorage.removeItem('class="react-rater'); //comportement bizarre du rater qui ajoute une entrée non voulue
+}
 
   render() {
     return (
-       <CardPanel className="teal lighten-4 black-text">
-            <Button large waves='light' className="Start-button" onClick={() => this.save_like(this.props.film)}>J'aime</Button>
-            <Button large waves='light' className="Start-button" onClick={() => this.save_dislike(this.props.film)}>Je vomis</Button>
-        </CardPanel>
-      );
-    }
+     <CardPanel className="Card-vote teal lighten-4 black-text">
+        <Rater total={5} rating={0} onRate={this.handleRate.bind(this)}/>
+      </CardPanel>
+     );
   }
+}
 
 export default Carte;

@@ -62,7 +62,7 @@ class Game extends React.Component {
 					<Button waves='light' className="Start-button small">Retour</Button>
 					</Link>
 					<Link to={'/profil/'}>
-					<Button medium waves='light' className="Start-button small">Profil</Button>
+					<Button waves='light' className="Start-button small">Profil</Button>
 					</Link>
 					</div>
 					{films.map(film =>
