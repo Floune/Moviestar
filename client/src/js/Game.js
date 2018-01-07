@@ -1,14 +1,25 @@
 import React from 'react';
 import '../css/Game.css';
 import Carte from './Card.js';
-import { Link } from 'react-router-dom';
-import { Button } from 'react-materialize';
+import Navbar from './Navbar.js';
 
 //Composant où vis le "jeu"
 class Game extends React.Component {
 	constructor() {
 		super();
-		this.state = {response: []}
+		this.state = {
+			response: [],
+			genres: [
+				'comedy',
+				'horror',
+				'drama',
+				'history',
+				'anime',
+				'fantasy',
+				'children',
+				'musical'
+			]
+		}
 	}	
 
 	//On appelle l'api quand le composant est monté et on remplit le state response
@@ -33,7 +44,13 @@ class Game extends React.Component {
 
 	//Appel à l'API
 	callApi = async () => {
-		const response = await fetch('/api/scrap');
+		let genre = this.props.location.pathname.slice(6);
+		if (genre == 'random')
+		{
+			let index = Math.floor(Math.random() * Math.floor(this.state.genres.length));
+			genre = this.state.genres[index];
+		}
+		const response = await fetch('/api/scrap/' + genre);
 		const film_obj = await response.json();
 
 		if (response.status !== 200)
@@ -81,18 +98,13 @@ class Game extends React.Component {
 	}
 	
 	render() {
+		let gender = this.props.location.pathname.slice(6);
+		let profil = '/profil/' + gender;
 		let films = this.state.response;
 		films = this.checkHistory(films);
 		return (
 				<div className="Game-container">
-					<div className="Game-nav">
-					<Link to={'/'}>
-					<Button waves='light' className="Start-button small">Retour</Button>
-					</Link>
-					<Link to={'/profil/'}>
-					<Button waves='light' className="Start-button small">Profil</Button>
-					</Link>
-					</div>
+					<Navbar profil={profil} />
 					{films.map(film =>
 					<div key={film.id} className="Game-card">
 						<img src={film.url} alt={film.title}/>

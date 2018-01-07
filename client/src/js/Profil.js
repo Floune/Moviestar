@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import '../css/Profil.css';
-import { Card, CardTitle, Button } from 'react-materialize';
+import { Button } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import Rater from 'react-rater';
 import 'react-rater/lib/react-rater.css';
@@ -40,20 +40,17 @@ class Profil extends Component {
 
 	render() {
 		let history = this.state.films;
-		let msg;
-		if (history === '')
-			msg = <p>Historique vide</p>
+		let retoure = '/game/' + this.props.location.pathname.slice(8);
 		return (
 			<div className="Profil-container">
 			<h4>Historique</h4>
-			{msg}
 			{history.map(film =>
 				<div key={film.film} className="Profil-card">
 					<Button className="Profil-del-button waves-red waves-circle waves-light btn-floating secondary-content" onClick={() => this.suppr(film)}><i className="material-icons delete">delete</i></Button>
 					<span className="Profil-infos">{film.film} : <Rater total={5} rating={Number(film.rate)} interactive={false}/></span> 
 				</div>
 				)}
-			<Link to={'/game/'}>
+			<Link to={retoure}>
 				<Button waves='light' className="Start-button">Retour</Button>
 			</Link>
 			</div>

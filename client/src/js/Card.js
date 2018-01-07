@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardPanel, Button } from 'react-materialize';
+import { CardPanel } from 'react-materialize';
 import '../css/card.css';
 import Rater from 'react-rater'
 import 'react-rater/lib/react-rater.css'
