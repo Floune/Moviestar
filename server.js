@@ -38,6 +38,12 @@ app.get('/api/scrap/:genre', function(req, res) {
 		})
 })
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "http://netflex.herokuapp.com");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // décommenter pour servir le dossier build
 app.use('/', express.static(`${__dirname}/client/build`));
 // Commenter pour servir le dossier build
