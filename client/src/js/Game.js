@@ -97,11 +97,23 @@ class Game extends React.Component {
 		return (films);
 	}
 	
+	getJpg(films) {
+		let newUrl = '';
+		for (let h = 0; h < films.length; h++)
+		{
+			newUrl = films[h].url.slice(0, -4);
+			newUrl += 'jpg';
+			films[h].url = newUrl;
+		}
+		return(films);
+	}
+
 	render() {
 		let gender = this.props.location.pathname.slice(6);
 		let profil = '/profil/' + gender;
 		let films = this.state.response;
 		films = this.checkHistory(films);
+		films = this.getJpg(films);
 		return (
 				<div className="Game-container">
 					<Navbar profil={profil} />
