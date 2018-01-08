@@ -12,11 +12,15 @@ class Start extends React.Component {
 		['/game/comedy',
 		 '/game/horror',
 		 '/game/drama',
+		 '/game/family',
 		 '/game/history',
 		 '/game/random',
 		 '/game/anime',
 		 '/game/fantasy',
 		 '/game/children',
+		 '/game/crime',
+		 '/game/cult',
+		 '/game/thriller',
 		 '/game/musical']
 		}
 	}

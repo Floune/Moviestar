@@ -7,6 +7,7 @@
     "nuka-carousel": "^3.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-flip-move": "^2.10.1",
     "react-infinite": "^0.12.1",
     "react-materialize": "^1.1.2",
     "react-rater": "^0.4.8",

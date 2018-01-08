@@ -10,16 +10,20 @@ class Game extends React.Component {
 		super();
 		this.state = {
 			response: [],
-			genres: [
-			'comedy',
-			'horror',
-			'drama',
-			'history',
-			'anime',
-			'fantasy',
-			'children',
-			'musical'
-			]
+			genres: ['comedy',
+		 'horror',
+		 'fantasy',
+		 'drama',
+		 'family',
+		 'history',
+		 'random',
+		 'anime',
+		 'fantasy',
+		 'children',
+		 'crime',
+		 'cult',
+		 'thriller',
+		 'musical']
 		}
 	}	
 
@@ -61,7 +65,6 @@ class Game extends React.Component {
 	}
 
 	getDetail = async (film) => {
-		fadeInImage(film.url);
 		film = film.replace(/ /g, "-");
 		film = film.replace("(", "");
 		film = film.replace(")", "").toLowerCase();
@@ -70,6 +73,7 @@ class Game extends React.Component {
 		if (response.status !== 200)
 			throw Error(inf_obj.films);
 		console.log(inf_obj);
+		// this.setState({visible: true});
 	}
 	//Récupérer l'url propre 
 	format_data_url(film_obj) {
@@ -125,6 +129,7 @@ class Game extends React.Component {
 		let gender = this.props.location.pathname.slice(6);
 		let profil = '/profil/' + gender;
 		let films = this.state.response;
+		let infos = "";
 		films = this.checkHistory(films);
 		films = this.getJpg(films);
 		return (

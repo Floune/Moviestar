@@ -21,6 +21,7 @@ app.get('/api/infos/:film', function(req, res) {
 			tmp_json.title = title;
 			tmp_json.rating = rating;
 			tmp_json.resume = resume;
+			console.log(tmp_json);
 			res.send({films: tmp_json});
 		}
 	})
