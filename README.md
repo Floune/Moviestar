@@ -1,7 +1,6 @@
-# Moviestar
-Not sure if in the mood for Tinder or Netflix ? Get Moviestar now, and rate films like you would rate people !
+# Netflex
+Not sure if in the mood for Tinder or Netflix ? Get Netflex now, and rate films like you would rate people !
 
-## Installer les dépendances et lancer
-* `yarn` && `npm install` dans le dossier parent
-* `npm install` dans le dossier client
-* `yarn dev` dans le dossier parent 
+## Installer yarn` && `npm install` dans le dossier parent
+* `npm i` puis `npm run build` dans le dossier client
+* `npm i` puis `node server.js` dans le dossier parent 
