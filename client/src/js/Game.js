@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/Game.css';
 import Carte from './Card.js';
 import Navbar from './Navbar.js';
+import { fadeInImage } from 'react-materialize';
 
 //Composant où vis le "jeu"
 class Game extends React.Component {
@@ -10,14 +11,14 @@ class Game extends React.Component {
 		this.state = {
 			response: [],
 			genres: [
-				'comedy',
-				'horror',
-				'drama',
-				'history',
-				'anime',
-				'fantasy',
-				'children',
-				'musical'
+			'comedy',
+			'horror',
+			'drama',
+			'history',
+			'anime',
+			'fantasy',
+			'children',
+			'musical'
 			]
 		}
 	}	
@@ -59,6 +60,17 @@ class Game extends React.Component {
 		return this.format_data_url(film_obj);
 	}
 
+	getDetail = async (film) => {
+		fadeInImage(film.url);
+		film = film.replace(/ /g, "-");
+		film = film.replace("(", "");
+		film = film.replace(")", "").toLowerCase();
+		const response = await fetch('/api/infos/' + film);
+		const inf_obj = await response.json();
+		if (response.status !== 200)
+			throw Error(inf_obj.films);
+		console.log(inf_obj);
+	}
 	//Récupérer l'url propre 
 	format_data_url(film_obj) {
 		for (var i = film_obj.films.length - 1; i > 0; i--) {
@@ -108,6 +120,7 @@ class Game extends React.Component {
 		return(films);
 	}
 
+
 	render() {
 		let gender = this.props.location.pathname.slice(6);
 		let profil = '/profil/' + gender;
@@ -115,15 +128,15 @@ class Game extends React.Component {
 		films = this.checkHistory(films);
 		films = this.getJpg(films);
 		return (
-				<div className="Game-container">
-					<Navbar profil={profil} />
-					{films.map(film =>
-					<div key={film.id} className="Game-card">
-						<img src={film.url} alt={film.title}/>
-						<Carte film={film}/>
-					</div>)}
-				</div>
-				
+			<div className="Game-container">
+			<Navbar profil={profil} />
+			{films.map(film =>
+				<div key={film.id} className="Game-card" onClick={() => this.getDetail(film.title)}>
+				<img src={film.url} alt={film.title} />
+				<Carte film={film}/>
+				</div>)}
+			</div>
+
 			);
 	}
 }

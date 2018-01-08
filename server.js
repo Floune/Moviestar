@@ -6,10 +6,29 @@ const cheerio = require('cheerio');
 
 //Route appelée avant le montage du composant Game
 //Va chercher les films sur reelgood
+
+app.get('/api/infos/:film', function(req, res) {
+	let film = req.params.film;
+	let url = 'https://reelgood.com/movie/' + film;
+	request(url, function(error, response, html) {
+		if (!error) {
+			let $ = cheerio.load(html);
+			let tmp_json = {};
+			let div_g = $('body').children().first().children('div').first().children().first().children().eq(4);
+			let title = div_g.children().eq(1).children('h1').text();
+			let rating = div_g.children().eq(1).children('div').first().children().eq(1).children().first().text();
+			let resume = div_g.children().eq(1).children('div').first().children().eq(2).text();
+			tmp_json.title = title;
+			tmp_json.rating = rating;
+			tmp_json.resume = resume;
+			res.send({films: tmp_json});
+		}
+	})
+})
+
 app.get('/api/scrap/:genre', function(req, res) {
 		let genre = req.params.genre;
 		let url = 'https://reelgood.com/movies/genre/' + genre;
-		console.log(url);
 		request(url, function(error, response, html) {
 			if (!error) {
 				let $ = cheerio.load(html);
@@ -45,6 +64,8 @@ app.use((req, res, next) => {
 });
 
 // décommenter pour servir le dossier build
+if (process.env.NODE_ENV === 'production') {
 app.use('/', express.static(`${__dirname}/client/build`));
+}
 // Commenter pour servir le dossier build
 app.listen(port, () => console.log(`listening on port ${port}`));

@@ -33,7 +33,7 @@ class Start extends React.Component {
 		return (
 			<div className="Start">
 				<div className="Start-content">
-					<h1 className="Start-title">Moviestar</h1>
+					<h1 className="Start-title">Netflex</h1>
 					{genres.map(genre => 
 						<Link key={genre} to={genre}>
 							<Button waves='light' className="Start-button">{this.clean_G(genre)}</Button>
