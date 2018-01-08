@@ -39,6 +39,6 @@ app.get('/api/scrap/:genre', function(req, res) {
 })
 
 // décommenter pour servir le dossier build
-// app.use('/', express.static(`${__dirname}/client/build`));
+app.use('/', express.static(`${__dirname}/client/build`));
 // Commenter pour servir le dossier build
 app.listen(port, () => console.log(`listening on port ${port}`));
